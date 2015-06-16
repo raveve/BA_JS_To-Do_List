@@ -37,7 +37,7 @@ var tdList = {
     /////////////////////////////////////////////////////
     jQuery('section').on('click', '.fa-check-circle', function (event) {
       console.log ('check-circle click works');
-      jQuery(this).parent().siblings('h2').toggleClass('completed');
+      jQuery(this).parent().siblings().children('h2').toggleClass('completed');
 
     //  tdList.updateItems(); need an if / else statement for PUT of complete
     });
@@ -115,8 +115,8 @@ var tdList = {
         console.log(data);
         tdList.renderItems();
 
-        localStorage.setItem(data._id, JSON.stringify(data));
-        var restoredSession = JSON.parse(localStorage.getItem(data._id));
+        // localStorage.setItem(data._id, JSON.stringify(data));
+        // var restoredSession = JSON.parse(localStorage.getItem(data._id));
 
         // Clears the input text areas
         jQuery('.form-create input').val('');
