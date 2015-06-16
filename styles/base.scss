@@ -1,0 +1,111 @@
+$cerulean: #0BACCB;
+$outerSpace: #343B3D;
+$twilightBlue: #F5FDFF;
+$gradient: linear-gradient(rgba(251, 232, 112, .25), rgba(251, 232, 112, .25));
+
+body {
+	color: $outerSpace;
+}
+
+// This is where the old CSS begins //
+
+h2 {
+  display: inline-block;
+}
+
+form {
+  margin-bottom: 15px;
+}
+
+article {
+  padding-bottom: 10px;
+}
+
+.editItem {
+  display: inline-block;
+}
+
+.form-group, .hover-hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+// This is where the old CSS ends //
+
+.list {
+	width: 40%;
+	margin-left: 30%;
+	margin-top: 25px;
+	padding: 5px;
+	background: $cerulean;
+	border: 1px $outerSpace solid;
+	border-radius: 5px;
+	-webkit-box-shadow: 3px 3px 5px 2px $outerSpace;
+  	-moz-box-shadow:    3px 3px 5px 2px $outerSpace;
+  	box-shadow:         3px 3px 5px 2px $outerSpace;
+  }
+
+h1 {
+	text-align: center;
+}
+
+section {
+	width: 80%;
+	margin-left: 10%;
+}
+
+input {
+	width: 100%;
+	background: $cerulean;
+	border: none;
+	border-bottom: 1px $outerSpace solid;
+}
+
+::-webkit-input-placeholder {
+	color: $twilightBlue;
+}
+
+:-moz-placeholder {
+   color: $twilightBlue;  
+}
+
+::-moz-placeholder {
+   color: $twilightBlue;  
+}
+
+:-ms-input-placeholder {  
+   color: $twilightBlue;  
+}
+
+.fa-times-circle, .fa-check-circle {
+  color: $outerSpace;
+}
+
+.fa-times-circle:hover, .fa-check-circle:hover {
+  color: #201326;
+}
+
+.fa-times-circle {
+	padding-right: 25px;
+}
+
+.fa-check-circle {
+	padding-right: 5px;
+}
+
+.dbl-click:hover, .fa-check-circle {
+  cursor: pointer;
+}
+
+.completed {
+  text-decoration: line-through;
+}
+
+.task {
+	width: 70%;
+	display: inline-block;
+}
+
