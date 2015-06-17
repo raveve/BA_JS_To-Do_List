@@ -5,46 +5,29 @@
   <title>BA_JS_To-Do_List</title>
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="styles/base.css">
-
-  <script type="html/template" id="todoTmpl">
-  <article data-itemid="<%= _id %>">
-  <h2><i class="fa fa-check-circle"></i></h2>
-  <a href="" class="delete-item"><h2><i class="fa fa-times-circle"></h2></i></a>
-  <div class="task"><h2 class="dbl-click"><%= item %></h2>
-  <form class="editItem form-group" action="">
-  <input type="text" class="form-control input-lg" name="editItem" value="<%= item %>">
-  </form></div>
-  </article>
-  </script>
-
 </head>
-
 <body>
-  <div class="list">
+
+<div class="list">
   <header>
-    <h1>List</h1>
+    <h1>Tasks</h1>
   </header>
 
-      <section>
+  <section>
+    <form id="create-item" action="">
+      <div class="form-create">
+        <input type="text" name="createItem" placeholder="Type task here">
+      </div>
+    </form>
 
-        <form id="create-item" action="">
-          <div class="form-create">
-            <input type="text" name="createItem" placeholder="Type list item here">
-          </div>
-        </form>
+    <article id="tasks">
 
-        <article id="tasks">
+    </article>
 
-        </article>
+  </section>
+</div>
 
-      </section>
-	</div>
-
-
-<script src="bower_components/jquery/dist/jquery.js"></script>
-<script src="bower_components/underscore/underscore.js"></script>
-
-<script src="main.js"></script>
-
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+	<script src="jQuery.js"></script>	
 </body>
 </html>

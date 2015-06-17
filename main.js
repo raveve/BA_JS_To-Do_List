@@ -56,7 +56,7 @@ var tdList = {
       /////////////////////////////////////////////////////
      /////   Enter submits update for editing item    ////
     /////////////////////////////////////////////////////
-    jQuery('section').on('submit', '.editItem', function (event) {
+    jQuery('section').on('submit', '.edit-item', function (event) {
         event.preventDefault();
         var itemId = jQuery(this).closest('article').data('itemid');
         var editedItem = {
@@ -92,7 +92,32 @@ var tdList = {
       type: 'GET',
       success: function (items) {
         console.log(items);
-        var template = _.template(jQuery('#todoTmpl').html());
+        // var template = _.template(jQuery('#todoTmpl').html());
+//         var template = function (item) {
+//           jQuery('#tasks').append('<article data-itemid="' + id + '">
+//             <h2><i class="fa fa-check-circle"></i></h2>
+//             <a href="" class="delete-item"><h2><i class="fa fa-times-circle"></i></h2></a>
+//             <div class="task"><h2 class="dbl-click">' + item + '</h2>
+//             <form class="edit-item" action="">
+//             <input type="text" name="editItem" value="' + item + '">
+//             </form></div>
+//             </article>');
+//         },
+// var template = function (item) {
+
+//  var articleStart = '<article data-itemid="' + id + '>',
+//      headerCheck = '<h2><i class="fa fa-check-circle"></i></h2>',
+//      headerTimes = '<h2><i class="fa fa-times-circle"></i></h2>',
+//      link = '<a href="" class="delete-item">' + headerTimes + '</a>',
+//      headerClick = '<h2 class="dbl-click">' + item + '</h2>',
+//      form = '<form class="edit-item" action=""><input type="text" name="editItem" value="' + item + '</form>',
+//      articleEnd = '</div></article>';
+
+
+//  jQuery('#tasks').append(articleStart + headerCheck + link + headerClick + form + articleEnd);
+// },
+
+
         var markup = "";
         items.forEach(function (item, idx, arr){
           markup += template(item);
