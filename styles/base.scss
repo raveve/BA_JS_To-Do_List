@@ -80,35 +80,6 @@ input {
    color: $twilightBlue;  
 }
 
-.fa-times-circle, .fa-check-circle {
-  color: $outerSpace;
-}
-
-.fa-times-circle:hover, .fa-check-circle:hover {
-  color: #201326;
-}
-
-.fa-times-circle {
-	padding-right: 25px;
-}
-
-.fa-check-circle {
-	padding-right: 5px;
-}
-
-.dbl-click:hover, .fa-check-circle {
-  cursor: pointer;
-}
-
-.completed {
-  text-decoration: line-through;
-}
-
-.task {
-	width: 70%;
-	display: inline-block;
-}
-
 :-ms-input-placeholder {  
   color: $twilightBlue;  
 }

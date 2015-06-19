@@ -56,28 +56,6 @@ input {
 :-ms-input-placeholder {
   color: #F5FDFF; }
 
-.fa-times-circle, .fa-check-circle {
-  color: #343B3D; }
-
-.fa-times-circle:hover, .fa-check-circle:hover {
-  color: #201326; }
-
-.fa-times-circle {
-  padding-right: 25px; }
-
-.fa-check-circle {
-  padding-right: 5px; }
-
-.dbl-click:hover, .fa-check-circle {
-  cursor: pointer; }
-
-.completed {
-  text-decoration: line-through; }
-
-.task {
-  width: 70%;
-  display: inline-block; }
-
 :-ms-input-placeholder {
   color: #F5FDFF; }
 
