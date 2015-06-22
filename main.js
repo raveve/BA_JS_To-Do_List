@@ -50,7 +50,7 @@ var tdList = {
     jQuery('article').on('dblclick', '.dbl-click', function (event) {
         event.preventDefault();
         jQuery(this).hide();
-        jQuery(this).closest('article').find('form').toggleClass('form-group');
+        jQuery(this).closest('article').find('form').toggleClass('edit-form');
     });
 
       /////////////////////////////////////////////////////

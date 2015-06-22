@@ -1,10 +1,10 @@
 body {
   color: #343B3D; }
 
-.editItem {
+.edit-item {
   display: inline-block; }
 
-.form-group, .hover-hide {
+.edit-form {
   display: none; }
 
 .show {

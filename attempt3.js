@@ -1,35 +1,3 @@
-// jQuery(document).ready(function(){
-
-// jQuery(document).ready(function ($) { 
-// 	task.prototype = { 
-// 		init: function(options) { 
-// 			this.settings = { 
-// 				'id': ("0000" + (Math.random()*Math.pow(36,4) << 0).toString(36)).slice(-4);, 
-// 				'title': '', 
-// 				'completed': false };
-// 		} 
-
-// 		var aTask = new task({'title': title});
-
-
-// more like the second one
-// function task(array) { this.init(array); }
-// where the array are your id, title and completed
-// so you have something like:
-// jQuery(document).ready(function ($) { task.prototype = { init: function(options) { this.settings = { 'id': IDgoesHere, 'title': '', 'completed': false }; } };
-// So you'd need a way to generate your ID to put in IDgoesHere, but otherwise that code would initialize a new task object that has an id, an empty string for the title, and the completed flag set to false.
-// then you call it using the new  keyword:
-// var aTask = new task({'title': title});
-// because the task prototype, when you construct a new task, unless you pass it new values, it'll initialize with the default ones (like false for the completed flag)
-
-
-// var taskObject = {
-//     id : 1,
-//     title : 'title',
-//     completed : false,
-//     element: ''
-// }
-
 var taskObject;
 
 function TaskObject(element) {
@@ -49,20 +17,33 @@ TaskObject.prototype = {
 			// Do nothing (keeps from creating a blank task)
 		}
 		else {
-			jQuery('#tasks').append('<article><h2><i class="fa fa-check-circle"></i></h2><a href="" class="delete-item"><h2><i class="fa fa-times-circle"></i></h2></a><div class="task"><h2 class="item">' + taskObject.element.val() + '</h2></div></article>'), // Make variables later
+			jQuery('#tasks').append('<article data-itemid="' + taskObject.id + '"><h2><i class="fa fa-check-circle"></i></h2><a href="" class="delete-item"><h2><i class="fa fa-times-circle"></i></h2></a><div class="task"><h2 class="item dbl-click" contentEditable="true">' + taskObject.element.val() + '</h2></div><form class="edit-item edit-form" action=""><input type="text" name="editItem" value="' + taskObject.element.val() + '"></form></article>'), 
+				// Make variables later
 				// localStorage.setItem(taskObject.id, JSON.stringify(taskObject)),
 				jQuery('.form-create input').val('');
 		}
-		console.log("Submit is doing something");
+		console.log("Submit is doing something"); // Remove later
 	},
 	deleteTask : function(event) {
 		event.preventDefault();
+		jQuery(this).closest('article').remove();
+		console.log("Delete is doing something"); // Remove later
 	},
 	completeTask : function(event) {
 		event.preventDefault();
+		jQuery(this).parent().siblings().children('h2').toggleClass('completed');
+		console.log('Check-circle click is doing something'); // Remove later
 	},
 	editTask : function(event) {
 		event.preventDefault();
+		// jQuery(this).hide();
+		// jQuery(this).closest('article').find('form').toggleClass('edit-form');
+		// console.log("Double click is doing something");
+	},
+	updateTask : function() {
+		event.preventDefault();
+		// jQuery('.dbl-click').show();
+		// jQuery(this).toggleClass('edit-form');
 	},
 	renderTasks : function() {
 		event.preventDefault();
@@ -74,12 +55,16 @@ jQuery(document).ready(function() {
 
 	taskObject = new TaskObject(inputElement);
 
-	// elementVal = taskObject.element.val();
-
 	jQuery('#create-item').on('submit', taskObject.onSubmit);
 
-});
+	jQuery('section').on('click', '.delete-item', taskObject.deleteTask);
 
+	jQuery('section').on('click', '.fa-check-circle', taskObject.completeTask);
+
+	// jQuery('article').on('dblclick', '.dbl-click', taskObject.editTask);
+
+	// jQuery('section').on('submit', '.edit-item', taskObject.updateTask);
+});
 
 
 
