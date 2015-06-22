@@ -19,7 +19,7 @@ TaskObject.prototype = {
 		else {
 			jQuery('#tasks').append('<article data-itemid="' + taskObject.id + '"><h2><i class="fa fa-check-circle"></i></h2><a href="" class="delete-item"><h2><i class="fa fa-times-circle"></i></h2></a><div class="task"><h2 class="item dbl-click" contentEditable="true">' + taskObject.element.val() + '</h2></div><form class="edit-item edit-form" action=""><input type="text" name="editItem" value="' + taskObject.element.val() + '"></form></article>'), 
 				// Make variables later
-				// localStorage.setItem(taskObject.id, JSON.stringify(taskObject)),
+				localStorage.setItem(taskObject.id, JSON.stringify(taskObject)),
 				jQuery('.form-create input').val('');
 		}
 		console.log("Submit is doing something"); // Remove later
@@ -27,6 +27,8 @@ TaskObject.prototype = {
 	deleteTask : function(event) {
 		event.preventDefault();
 		jQuery(this).closest('article').remove();
+		itemId = jQuery(this).closest('article').data('itemid');
+		localStorage.removeItem(itemId);
 		console.log("Delete is doing something"); // Remove later
 	},
 	completeTask : function(event) {
@@ -65,6 +67,5 @@ jQuery(document).ready(function() {
 
 	// jQuery('section').on('submit', '.edit-item', taskObject.updateTask);
 });
-
 
 
