@@ -68,4 +68,4 @@ jQuery(document).ready(function() {
 	// jQuery('section').on('submit', '.edit-item', taskObject.updateTask);
 });
 
-
+{"element":{"0":{},"length":1,"prevObject":{"0":{"location":{"ancestorOrigins":{"length":0},"origin":"file://","hash":"","search":"","pathname":"/Volumes/Sites/BA_JS_To-Do_List/index.html","port":"","hostname":"","host":"","protocol":"file:","href":"file:///Volumes/Sites/BA_JS_To-Do_List/index.html"}},"context":{"location":{"ancestorOrigins":{"length":0},"origin":"file://","hash":"","search":"","pathname":"/Volumes/Sites/BA_JS_To-Do_List/index.html","port":"","hostname":"","host":"","protocol":"file:","href":"file:///Volumes/Sites/BA_JS_To-Do_List/index.html"}},"length":1},"context":{"location":{"ancestorOrigins":{"length":0},"origin":"file://","hash":"","search":"","pathname":"/Volumes/Sites/BA_JS_To-Do_List/index.html","port":"","hostname":"","host":"","protocol":"file:","href":"file:///Volumes/Sites/BA_JS_To-Do_List/index.html"}},"selector":"input[name=\"createItem\"]"},"id":"idfm","title":"","completed":false}
