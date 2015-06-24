@@ -15,6 +15,12 @@ jQuery(document).ready(function(){
 			jQuery('#tasks').append('<article data-itemid="' + uid + '"><h2><i class="fa fa-check-circle"></i></h2><a href="" class="delete-item"><h2><i class="fa fa-times-circle"></i></h2></a><div class="task"><h2 class="item dbl-click">' + newItem.item + '</h2></div><form class="edit-item edit-form" action=""><input type="text" name="editItem" value="' + newItem.item + '"></form></article>'),
 			localStorage.setItem(uid, JSON.stringify(newItem)),
 			jQuery('.form-create input').val('');
+			jQuery('article').on('dblclick', '.dbl-click', function(event){
+				event.preventDefault();
+				console.log("Double click is doing something"); // Remove later
+				jQuery(this).hide();
+				jQuery(this).closest('article').find('form').toggleClass('edit-form');
+			});
 		}
 		console.log("Submit is doing something");
 		console.log(newItem.item); // Remove later
@@ -30,13 +36,14 @@ jQuery(document).ready(function(){
 	jQuery('section').on('click', '.fa-check-circle', function(event) {
 		console.log('check-circle click works'); // Remove later
 		var completed = jQuery(this).parent().siblings().children('h2');
-		jQuery(completed).addClass('completed'); // toggleClass might be an option, see commented out code below
+		jQuery(completed).addClass('completed'); // toggleClass might be an option, see commented out code belowbelow
 		if(jQuery('.completed')) {
 			var itemId = jQuery(this).closest('article').data('itemid');
 			localStorage.setItem(itemId, JSON.stringify({
 				id: itemId,
 				item: jQuery(this).parent().siblings().children('h2').text(),
-				complete: true}));
+				complete: true
+			}));
 		}
 		// else if(jQuery('.item:not(.completed)')) {
 			
@@ -48,13 +55,27 @@ jQuery(document).ready(function(){
 		// }
 	});
 
-	jQuery('article').on('dblclick', '.dbl-click', function(event){
+	// jQuery('article').on('dblclick', '.dbl-click', function(event){
+	// 	event.preventDefault();
+	// 	console.log("Double click is doing something"); // Remove later
+	// 	jQuery(this).hide();
+	// 	jQuery(this).closest('article').find('form').toggleClass('edit-form');
+	// });
+
+	jQuery('section').on('submit', '.edit-item', function(event) {
 		event.preventDefault();
-		console.log("Double click is doing something"); // Remove later
-		jQuery(this).hide();
-		jQuery(this).closest('article').find('form').toggleClass('edit-form');
+		jQuery('.dbl-click').show();
+		jQuery(this).toggleClass('edit-form');
+		var itemId = jQuery(this).closest('article').data('itemid');
+		// Tried using the below instead of what I have in the setItem below and replaceWith, gave me an undefined instead
+		// var editedItem = jQuery(this).find('.edit-item input').val();
+		var taskObject = JSON.parse(localStorage.getItem(itemId));
+		localStorage.setItem(itemId, JSON.stringify({
+			id: itemId,
+			item: jQuery('section').find('.edit-item input').val(),
+			complete: taskObject.complete
+		}));
+		jQuery(this).siblings('.task').children('h2').replaceWith('<h2>' + jQuery('section').find('.edit-item input').val()  + '</h2>');
 	});
 
 });
-
-// (jQuery('.fa-check-circle').parent().siblings().children('h2').eq(1))
