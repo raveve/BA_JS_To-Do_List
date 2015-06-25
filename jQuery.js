@@ -12,10 +12,10 @@ jQuery(document).ready(function(){
 			//Do nothing (keeps from creating an empty item)
 		}
 		else {
-			jQuery('#tasks').append('<article data-itemid="' + uid + '"><h2><i class="fa fa-check-circle"></i></h2><a href="" class="delete-item"><h2><i class="fa fa-times-circle"></i></h2></a><div class="task"><h2 class="item dbl-click">' + newItem.item + '</h2><form class="edit-item edit-form" action=""><input type="text" name="editItem" value="' + newItem.item + '"></form></div></article>'),
+			jQuery('#tasks').append('<article id="' + uid + '" data-itemid="' + uid + '"><h2><i class="fa fa-check-circle"></i></h2><a href="" class="delete-item"><h2><i class="fa fa-times-circle"></i></h2></a><div class="task"><h2 class="item dbl-click">' + newItem.item + '</h2><form class="edit-item edit-form" action=""><input type="text" name="editItem" value="' + newItem.item + '"></form></div></article>'),
 			localStorage.setItem(uid, JSON.stringify(newItem)),
 			jQuery('.form-create input').val('');
-			jQuery('article').on('dblclick', '.dbl-click', function(event){
+			jQuery('#' + uid).on('dblclick', '.dbl-click', function(event){
 				event.preventDefault();
 				console.log("Double click is doing something"); // Remove later
 				jQuery(this).hide();

@@ -2,15 +2,21 @@ $cerulean: #0BACCB;
 $outerSpace: #343B3D;
 $twilightBlue: #F5FDFF;
 $gradient: linear-gradient(rgba(251, 232, 112, .25), rgba(251, 232, 112, .25));
+$font-family: 'The Girl Next Door', cursive;
 
 body {
 	color: $outerSpace;
+  font-family: $font-family;
 }
 
 // This is where the old CSS begins //
 
 .edit-item {
   display: inline-block;
+  input {
+    text-align: left;
+    color: $twilightBlue;
+  }
 }
 
 .edit-form {
@@ -38,10 +44,12 @@ body {
 
 h1 {
 	text-align: center;
+  font-weight: bold;
 }
 
 h2 {
   display: inline-block;
+  margin: 5px 0 5px 0;
 }
 
 form {
@@ -49,7 +57,7 @@ form {
 }
 
 article {
-  padding-bottom: 10px;
+  padding-bottom: 5px;
 }
 
 section {
@@ -60,6 +68,9 @@ section {
 input {
 	width: 100%;
 	background: $cerulean;
+  font-family: $font-family;
+  font-size: 1.5em;
+  text-align: center;
 	border: none;
 	border-bottom: 1px $outerSpace solid;
 }
@@ -99,6 +110,10 @@ input {
 .fa-check-circle {
 	padding-right: 5px;
 }
+
+// article:nth-child(-n+2) {
+//   float: top;
+// }
 
 .dbl-click:hover, .fa-check-circle {
   cursor: pointer;
