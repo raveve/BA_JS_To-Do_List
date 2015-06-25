@@ -1,4 +1,13 @@
 jQuery(document).ready(function(){
+	renderItems();
+	// loadTaskList();
+
+	// function loadTaskList() {
+	// 	var data = JSON.parse(localStorage.getItem('tasklist'));
+
+	// 	// for each task in data, display task
+	// } // lori's code
+
 	jQuery('#create-item').on('submit', function(event) {
 		event.preventDefault();
 		var uid = ("0000" + (Math.random()*Math.pow(36,4) << 0).toString(36)).slice(-4);
@@ -13,6 +22,7 @@ jQuery(document).ready(function(){
 		}
 		else {
 			jQuery('#tasks').append('<article id="' + uid + '" data-itemid="' + uid + '"><h2><i class="fa fa-check-circle"></i></h2><a href="" class="delete-item"><h2><i class="fa fa-times-circle"></i></h2></a><div class="task"><h2 class="item dbl-click">' + newItem.item + '</h2><form class="edit-item edit-form" action=""><input type="text" name="editItem" value="' + newItem.item + '"></form></div></article>'),
+			//storeTask(newItem), // lori's code
 			localStorage.setItem(uid, JSON.stringify(newItem)),
 			jQuery('.form-create input').val('');
 			jQuery('#' + uid).on('dblclick', '.dbl-click', function(event){
@@ -25,6 +35,18 @@ jQuery(document).ready(function(){
 		console.log("Submit is doing something");
 		console.log(newItem.item); // Remove later
 	});
+
+	// function storeTask(newItem) {
+	// 	var data = JSON.parse(localStorage.getItem('tasklist'));
+
+	// 	if (data === null) {
+	// 		data = new Object();
+	// 	}
+
+	// 	data[newItem.uid] = newItem;
+	// 	JSON.stringify(localStorage.setItem('tasklist', data);
+	// }; // lori's code
+
 
 	jQuery('section').on('click', '.delete-item', function(event){
 		event.preventDefault();
@@ -68,4 +90,20 @@ jQuery(document).ready(function(){
 		}));
 		jQuery(this).parent('.task').children('h2').replaceWith('<h2 class="item dbl-click">' + jQuery(this).find('input[name="editItem"]').val() + '</h2>');
 	});
+
+	function renderItems() {
+
+	for (var i = 0; i < localStorage.length; i++) { 
+		var key = localStorage.key(i);
+		var value = JSON.parse(localStorage.getItem(key));
+
+		jQuery('#tasks').append('<article id="' + value.id + '" data-itemid="' + value.id + '"><h2><i class="fa fa-check-circle"></i></h2><a href="" class="delete-item"><h2><i class="fa fa-times-circle"></i></h2></a><div class="task"><h2 class="item dbl-click">' + value.item + '</h2><form class="edit-item edit-form" action=""><input type="text" name="editItem" value="' + value.item + '"></form></div></article>')
+	}
+
+	so you'll just need to write a for loop to get through the length of localStorage, pull each piece via .key and then parse that as a value, then display that value
+
+
+		// Do something with the returned task to display it
+
+	// localStorage.clear(); // Attach this to a function for a button or link to clear all items in localStorage
 });
