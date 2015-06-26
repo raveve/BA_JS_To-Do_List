@@ -11,7 +11,7 @@ jQuery(document).ready(function(){
 			complete: false
 		}
 		console.log(uid); // Remove later
-		if(newItem.item === '') {
+		if (newItem.item === '') {
 			//Do nothing (keeps from creating an empty item)
 		}
 		else {
@@ -40,7 +40,7 @@ jQuery(document).ready(function(){
 		console.log('check-circle click works'); // Remove later
 		var completed = jQuery(this).parent().siblings().children('h2');
 		jQuery(completed).addClass('completed'); // toggleClass might be an option, see commented out code below
-		if(jQuery('.completed')) {
+		if (jQuery('.completed')) {
 			var itemId = jQuery(this).closest('article').data('itemid');
 			localStorage.setItem(itemId, JSON.stringify({
 				id: itemId,
@@ -97,8 +97,20 @@ jQuery(document).ready(function(){
 		}
 	};
 
-	jQuery('#delete-complete').on('click', function(event){
+	jQuery('#delete-all').on('click', function(event){
 		localStorage.clear();
 		jQuery('article').remove();
+	});
+
+	jQuery('#delete-complete').on('click', function(event){
+		for (var i = 0; i < localStorage.length; i++) {
+			var key = localStorage.key(i);
+			var value = JSON.parse(localStorage.getItem(key));
+
+			if (value.complete === true) {
+				localStorage.removeItem(key);
+				jQuery('.completed').parent().parent().remove();
+			}
+		}
 	});
 });
