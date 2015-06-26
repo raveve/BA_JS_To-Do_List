@@ -9,26 +9,6 @@ body {
   font-family: $font-family;
 }
 
-// This is where the old CSS begins //
-
-.edit-item {
-  display: inline-block;
-  input {
-    text-align: left;
-    color: $twilightBlue;
-  }
-}
-
-.edit-form {
-  display: none;
-}
-
-.show {
-  display: block;
-}
-
-// This is where the old CSS ends //
-
 .list {
   width: 40%;
   margin-left: 30%;
@@ -60,7 +40,7 @@ article {
   padding-bottom: 5px;
 }
 
-section {
+section, footer {
 	width: 80%;
 	margin-left: 10%;
 }
@@ -126,4 +106,29 @@ input {
 .task {
 	width: 70%;
 	display: inline-block;
+}
+
+.edit-item {
+  display: inline-block;
+  input {
+    text-align: left;
+    color: $twilightBlue;
+  }
+}
+
+.edit-form {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+footer p {
+  text-align: center;
+  margin: 5px 0 5px 0;
+}
+
+#delete-complete:hover, #delete-all:hover {
+  cursor: pointer;
 }
