@@ -111,9 +111,9 @@ input {
 	padding-right: 5px;
 }
 
-// article:nth-child(-n+2) {
-//   float: top;
-// }
+.icon {
+  vertical-align: top;
+}
 
 .dbl-click:hover, .fa-check-circle {
   cursor: pointer;

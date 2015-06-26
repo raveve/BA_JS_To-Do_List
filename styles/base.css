@@ -80,6 +80,9 @@ input {
 .fa-check-circle {
   padding-right: 5px; }
 
+.icon {
+  vertical-align: top; }
+
 .dbl-click:hover, .fa-check-circle {
   cursor: pointer; }
 

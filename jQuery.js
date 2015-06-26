@@ -1,5 +1,5 @@
 jQuery(document).ready(function(){
-	
+
 	renderItems();
 
 	jQuery('#create-item').on('submit', function(event) {
@@ -15,7 +15,7 @@ jQuery(document).ready(function(){
 			//Do nothing (keeps from creating an empty item)
 		}
 		else {
-			jQuery('#tasks').append('<article id="' + uid + '" data-itemid="' + uid + '"><h2><i class="fa fa-check-circle"></i></h2><a href="" class="delete-item"><h2><i class="fa fa-times-circle"></i></h2></a><div class="task"><h2 class="item dbl-click">' + newItem.item + '</h2><form class="edit-item edit-form" action=""><input type="text" name="editItem" value="' + newItem.item + '"></form></div></article>'),
+			jQuery('#tasks').append('<article id="' + uid + '" data-itemid="' + uid + '"><h2 class="icon"><i class="fa fa-check-circle"></i></h2><h2 class="icon"><a href="" class="delete-item"><i class="fa fa-times-circle"></i></a></h2><div class="task"><h2 class="item dbl-click">' + newItem.item + '</h2><form class="edit-item edit-form" action=""><input type="text" name="editItem" value="' + newItem.item + '"></form></div></article>'),
 			localStorage.setItem(uid, JSON.stringify(newItem)),
 			jQuery('.form-create input').val('');
 			jQuery('#' + uid).on('dblclick', '.dbl-click', function(event){
@@ -78,7 +78,7 @@ jQuery(document).ready(function(){
 		var value = JSON.parse(localStorage.getItem(key));
 
 		if (value.complete === true) {
-			jQuery('#tasks').append('<article id="' + value.id + '" data-itemid="' + value.id + '"><h2><i class="fa fa-check-circle"></i></h2><a href="" class="delete-item"><h2><i class="fa fa-times-circle"></i></h2></a><div class="task"><h2 class="item dbl-click completed">' + value.item + '</h2><form class="edit-item edit-form" action=""><input type="text" name="editItem" value="' + value.item + '"></form></div></article>')
+			jQuery('#tasks').append('<article id="' + value.id + '" data-itemid="' + value.id + '"><h2 class="icon"><i class="fa fa-check-circle"></i></h2><h2 class="icon"><a href="" class="delete-item"><i class="fa fa-times-circle"></i></a></h2><div class="task"><h2 class="item dbl-click completed">' + value.item + '</h2><form class="edit-item edit-form" action=""><input type="text" name="editItem" value="' + value.item + '"></form></div></article>')
 			jQuery('#' + value.id).on('dblclick', '.dbl-click', function(event){
 				event.preventDefault();
 				console.log("Double click is doing something"); // Remove later
@@ -87,7 +87,7 @@ jQuery(document).ready(function(){
 			});
 		}
 		else if (value.complete === false)
-			jQuery('#tasks').append('<article id="' + value.id + '" data-itemid="' + value.id + '"><h2><i class="fa fa-check-circle"></i></h2><a href="" class="delete-item"><h2><i class="fa fa-times-circle"></i></h2></a><div class="task"><h2 class="item dbl-click">' + value.item + '</h2><form class="edit-item edit-form" action=""><input type="text" name="editItem" value="' + value.item + '"></form></div></article>')
+			jQuery('#tasks').append('<article id="' + value.id + '" data-itemid="' + value.id + '"><h2 class="icon"><i class="fa fa-check-circle"></i></h2><h2 class="icon"><a href="" class="delete-item"><i class="fa fa-times-circle"></i></a></h2><div class="task"><h2 class="item dbl-click">' + value.item + '</h2><form class="edit-item edit-form" action=""><input type="text" name="editItem" value="' + value.item + '"></form></div></article>')
 		jQuery('#' + value.id).on('dblclick', '.dbl-click', function(event){
 				event.preventDefault();
 				console.log("Double click is doing something"); // Remove later
