@@ -49,7 +49,7 @@ jQuery(document).ready(function(){
 			}));
 		}
 		// else if(jQuery('.item:not(.completed)')) {
-			
+
 		// 	// The below works to change it to false when doing it in the console, so not sure why the above is not working as well...
 		// 	var itemId = jQuery('.fa-check-circle').closest('article').data('itemid');
 		// 	localStorage.setItem(itemId, JSON.stringify({
@@ -97,5 +97,8 @@ jQuery(document).ready(function(){
 		}
 	};
 
-	// localStorage.clear(); // Attach this to a function for a button or link to clear all items in localStorage
+	jQuery('#delete-complete').on('click', function(event){
+		localStorage.clear();
+		jQuery('article').remove();
+	});
 });
