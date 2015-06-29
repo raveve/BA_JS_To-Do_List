@@ -97,20 +97,25 @@ jQuery(document).ready(function(){
 		}
 	};
 
-	jQuery('#delete-all').on('click', function(event){
-		localStorage.clear();
-		jQuery('article').remove();
-	});
-
 	jQuery('#delete-complete').on('click', function(event){
+		var toDelete = [];
+		jQuery('.completed').parent().parent().remove();
 		for (var i = 0; i < localStorage.length; i++) {
 			var key = localStorage.key(i);
 			var value = JSON.parse(localStorage.getItem(key));
 
 			if (value.complete === true) {
-				localStorage.removeItem(key);
-				jQuery('.completed').parent().parent().remove();
+				toDelete.push(key);
+				//localStorage.removeItem(key);
 			}
 		}
+		for(var k=0; k < toDelete.length; k++) {
+			localStorage.removeItem(toDelete[k]);
+		}
+	});
+
+	jQuery('#delete-all').on('click', function(event){
+		localStorage.clear();
+		jQuery('article').remove();
 	});
 });
