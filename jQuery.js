@@ -10,7 +10,6 @@ jQuery(document).ready(function(){
 			item: jQuery(this).find('input[name="createItem"]').val(),
 			complete: false
 		}
-		console.log(uid); // Remove later
 		if (newItem.item === '') {
 			//Do nothing (keeps from creating an empty item)
 		}
@@ -20,13 +19,10 @@ jQuery(document).ready(function(){
 			jQuery('.form-create input').val('');
 			jQuery('#' + uid).on('dblclick', '.dbl-click', function(event){
 				event.preventDefault();
-				console.log("Double click is doing something"); // Remove later
 				jQuery(this).hide();
 				jQuery(this).closest('article').find('form').toggleClass('edit-form');
 			});
 		}
-		console.log("Submit is doing something");
-		console.log(newItem.item); // Remove later
 	});
 
 	jQuery('section').on('click', '.delete-item', function(event){
@@ -37,7 +33,6 @@ jQuery(document).ready(function(){
 	});
 
 	jQuery('section').on('click', '.fa-check-circle', function(event) {
-		console.log('check-circle click works'); // Remove later
 		var completed = jQuery(this).parent().siblings().children('h2');
 		jQuery(completed).addClass('completed'); // toggleClass might be an option, see commented out code below
 		if (jQuery('.completed')) {
@@ -76,12 +71,10 @@ jQuery(document).ready(function(){
 	for (var i = 0; i < localStorage.length; i++) {
 		var key = localStorage.key(i);
 		var value = JSON.parse(localStorage.getItem(key));
-
 		if (value.complete === true) {
 			jQuery('#tasks').append('<article id="' + value.id + '" data-itemid="' + value.id + '"><h2 class="icon"><i class="fa fa-check-circle"></i></h2><h2 class="icon"><a href="" class="delete-item"><i class="fa fa-times-circle"></i></a></h2><div class="task"><h2 class="item dbl-click completed">' + value.item + '</h2><form class="edit-item edit-form" action=""><input type="text" name="editItem" value="' + value.item + '"></form></div></article>')
 			jQuery('#' + value.id).on('dblclick', '.dbl-click', function(event){
 				event.preventDefault();
-				console.log("Double click is doing something"); // Remove later
 				jQuery(this).hide();
 				jQuery(this).closest('article').find('form').toggleClass('edit-form');
 			});
@@ -90,7 +83,6 @@ jQuery(document).ready(function(){
 			jQuery('#tasks').append('<article id="' + value.id + '" data-itemid="' + value.id + '"><h2 class="icon"><i class="fa fa-check-circle"></i></h2><h2 class="icon"><a href="" class="delete-item"><i class="fa fa-times-circle"></i></a></h2><div class="task"><h2 class="item dbl-click">' + value.item + '</h2><form class="edit-item edit-form" action=""><input type="text" name="editItem" value="' + value.item + '"></form></div></article>')
 		jQuery('#' + value.id).on('dblclick', '.dbl-click', function(event){
 				event.preventDefault();
-				console.log("Double click is doing something"); // Remove later
 				jQuery(this).hide();
 				jQuery(this).closest('article').find('form').toggleClass('edit-form');
 			});
@@ -103,10 +95,8 @@ jQuery(document).ready(function(){
 		for (var i = 0; i < localStorage.length; i++) {
 			var key = localStorage.key(i);
 			var value = JSON.parse(localStorage.getItem(key));
-
 			if (value.complete === true) {
 				toDelete.push(key);
-				//localStorage.removeItem(key);
 			}
 		}
 		for(var k=0; k < toDelete.length; k++) {
