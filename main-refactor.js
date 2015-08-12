@@ -25,20 +25,18 @@ jQuery(document).ready(function ($) {
                 this.setupDebugging();
             }
 
-			this.renderItems();
+            this.renderItems();
             this.setObservers();
         },
 
-		renderItems: function() {
+        renderItems: function() {
             var self = this;
 
-            $.each(localStorage, function(idx, item){
+            for (ls in localStorage) {
+                var todoItem = JSON.parse(localStorage.getItem(ls));
 
-                var todoItem = JSON.parse(localStorage.getItem(localStorage.key(idx)));
-
-                self.renderSingleItem(localStorage.key(idx), todoItem.complete, todoItem.item);
-
-            });
+                self.renderSingleItem(ls, todoItem.complete, todoItem.item);
+            }
         },
 
         renderSingleItem: function(id, complete, item) {
@@ -65,10 +63,10 @@ jQuery(document).ready(function ($) {
                 var itemId = $(this).closest('article').attr('id');
 
                 localStorage.setItem(itemId, JSON.stringify({
-    				id: itemId,
-    				item: jQuery(this).parent().siblings().children('h2').text(),
-    				complete: true
-    			}));
+                    id: itemId,
+                    item: jQuery(this).parent().siblings().children('h2').text(),
+                    complete: true
+                }));
             });
 
             $('section').on('submit', '.edit-item', function(event){
@@ -112,9 +110,9 @@ jQuery(document).ready(function ($) {
             });
 
             $('#delete-all').on('click', function(event){
-        		localStorage.clear();
-        		$('article').remove();
-        	});
+                localStorage.clear();
+                $('article').remove();
+            });
 
             $('section').on('dblclick', '.dbl-click', function(event){
                 event.preventDefault();
@@ -141,7 +139,7 @@ jQuery(document).ready(function ($) {
             }else{
                 self.renderSingleItem(uid, newItem.complete, newItem.item);
                 localStorage.setItem(uid, JSON.stringify(newItem));
-                jQuery('.form-create input').val('');
+                // jQuery('.form-create input').val('');
             }
         },
 
