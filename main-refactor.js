@@ -178,5 +178,4 @@ jQuery(document).ready(function ($) {
      * Must be an object.
      */
     var baRavenTodo = new RavenTodo({"debug":true});
-    
 });
