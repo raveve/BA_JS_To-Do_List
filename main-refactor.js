@@ -88,19 +88,22 @@ jQuery(document).ready(function ($) {
             });
 
             $('#delete-complete').on('click', function(event){
-                var toDelete = [];
+                var toDelete = [],
+                    taskCompleted = $('.completed').parent().parent();
 
-                $.each(localStorage, function(idx, item){
-                    var todoItem = JSON.parse(localStorage.getItem(localStorage.key(idx)));
+                for (var i = 0; i < localStorage.length; i++) {
+                    var key = localStorage.key(i),
+                        value = JSON.parse(localStorage.getItem(key));
 
-                    if(todoItem.complete === true) {
+                    if (value.complete === true) {
                         toDelete.push(key);
                     }
-                });
+                }
 
-                $.each(toDelete, function(idx, item){
-                    self.deleteItem(item);
-                });
+                for (var k = 0; k < toDelete.length; k++) {
+                    taskCompleted.remove();
+                    localStorage.removeItem(toDelete[k]);
+                }
             });
 
             $('section').on('click', '.delete-item', function(event){
@@ -139,7 +142,7 @@ jQuery(document).ready(function ($) {
             }else{
                 self.renderSingleItem(uid, newItem.complete, newItem.item);
                 localStorage.setItem(uid, JSON.stringify(newItem));
-                // jQuery('.form-create input').val('');
+                jQuery('.form-create input').val('');
             }
         },
 
